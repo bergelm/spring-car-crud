@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html html xmlns:th="http://www.thymeleaf.org"  lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h3>CARS FOR SALE</h3>
+
+<table>
+
+    <tr>
+        <th>CAR ID</th><th>MARK</th><th>MODEL</th><th>COLOR</th><th>MODIFY</th>
+    </tr>
+
+    <tr>
+    <tr th:each="car: ${cars}">
+        <td th:text="${car.getId()}"></td>
+        <td th:text="${car.getMark()}"/></td>
+        <td th:text="${car.getModel()}"/></td>
+        <td th:text="${car.getColor()}"/></td>
+
+        <td><a th:href="@{/update-car/{id}(id=${car.getId()})}">Edit</a></td>
+        <td><a th:href="@{/delete-car/{id} (id=${car.getId()})}">Delete</a></td>
+
+
+
+    </tr>
+
+
+</table>
+
+
+<h3>ADD A NEW CAR</h3>
+
+<form th:action="@{add-car}" th:object="${newCar}" method="post">
+    <p>UNIQUE ID:<input type="text" th:field="*{id}"></p>
+    <p>MARK:<input type="text" th:field="*{mark}"></p>
+    <p>MODEL:<input type="text" th:field="*{model}"></p>
+    <p>COLOR:<input type="text" th:field="*{color}"></p>
+    <p><input type="submit" value="ADD CAR"></p>
+</form>
+
+<h3>FIND CAR BY ID</h3>
+
+<form th:action="@{/id-search}" th:object="${newCar}" method="get">
+    <p>CAR ID:<input type="text" th:field="*{id}"></p>
+     <p><input type="submit" value="FIND"></p>
+</form>
+
+<h3>FIND CAR BY COLOR</h3>
+
+<form th:action="@{/car-same-color}" th:object="${newCar}" method="get">
+    <p>COLOR:<input type="text" th:field="*{color}"></p>
+    <p><input type="submit" value="FIND"></p>
+</form>
+
+
+
+
+
+</body>
+</html>

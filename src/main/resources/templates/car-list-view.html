@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html html xmlns:th="http://www.thymeleaf.org"  lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<table>
+
+    <tr>
+        <th>CAR ID</th><th>MARK</th><th>MODEL</th>
+    </tr>
+
+    <tr>
+    <tr th:each="car: ${carsSameColor}">
+        <td th:text="${car.getId()}"></td>
+        <td th:text="${car.getMark()}"/></td>
+        <td th:text="${car.getModel()}"/></td>
+
+
+
+
+    </tr>
+
+
+</table>
+
+<a href="/car">RETURN</a>
+
+
+
+
+
+</body>
+</html>
